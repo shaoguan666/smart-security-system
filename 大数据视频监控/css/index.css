@@ -106,6 +106,16 @@ a{text-decoration: none}
     border: 2px solid #0b7ff3;
 }
 
+/* 高德地图监控点样式 */
+.map-monitor-point {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 200, 255, 0.8);
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
 .index_right{background-color: rgba(2,8,23,0.54);width: 626px;height: 790px;margin: 39px 0 0 0;border-radius: 10px}
 .right_line1{border-radius: 10px;border: 1px #0174f5 solid;margin: 1px;height: 788px}
 .right_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 784px}

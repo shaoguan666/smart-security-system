@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="js/artDialog/skins/default.css" type="text/css"/>
     <script src="js/laydate.js"></script>
     <script src="js/Home_page.js"></script>
-    <!-- 添加百度地图API -->
-    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=Kc5ThMmNz5UkTgdcQG9jliey8UTW2voO"></script>
+    <!-- 添加高德地图API -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d7dc89416cb76d315e129827e9223d8e"></script>
     <meta charset="UTF-8">
     <title>大数据管理平台</title>
 
@@ -179,7 +179,7 @@
                                 <div class="map_title">实时地图</div>
                             </div>
                         </div>
-                        <div class="map" id="map"  ></div>
+                        <div class="map" id="map" style="height: 94%; width: 100%;"></div>
                         <!--地图显示信息选择-->
                         <div class="display_type_box display_box" style="display: none;overflow:auto">
                             <div class="display_type_center_box">
@@ -562,7 +562,7 @@
                     </div>
                     <!--地址检索切换03-->
                     <div class="dataAllBorder02 addition_check_in" style="display: none;position: relative" >
-                        <div class="analysis" style="height: 34px;%">地址检索：</div>
+                        <div class="analysis" style="height: 34px;">地址检索：</div>
                         <div class="search_plate_box">
                             <ul class="search_separate">
                                 <li class="search_title">地址类型：</li>
@@ -1378,7 +1378,6 @@
 <script src="js/bstable/js/bootstrap-table.js"></script>
 <script type="text/javascript" src="js/jquery.pagination.js"></script>
 <script src="js/bstable/js/bootstrap-table-zh-CN.min.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script>
 
     <!--<script src="js/MainMap.js"></script>-->
 <script src="js/Home_page.js"></script>
@@ -1394,9 +1393,143 @@
         } else if (window.screen.height > 1080) {
             number = 8
         }
+        
+        // 初始化高德地图
+        initAMap();
     });
-
-
+    
+    // 高德地图初始化
+    function initAMap() {
+        // 创建地图实例
+        var map = new AMap.Map('map', {
+            zoom: 11,           // 地图缩放级别
+            center: [116.397428, 39.90923], // 地图中心点坐标，默认为北京市中心
+            viewMode: '3D',     // 使用3D视图
+            mapStyle: 'amap://styles/dark', // 设置地图样式为黑色，适合监控系统
+            resizeEnable: true  // 支持自动调整大小
+        });
+        
+        // 添加缩放和平移控件
+        map.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+            map.addControl(new AMap.ToolBar());
+            map.addControl(new AMap.Scale());
+        });
+        
+        // 添加模拟监控点标记
+        var markers = [];
+        var positions = [
+            [116.368904, 39.913423],
+            [116.382122, 39.901176],
+            [116.387271, 39.922501],
+            [116.398258, 39.914714],
+            [116.407261, 39.908861]
+        ];
+        
+        // 创建自定义点标记内容
+        for (var i = 0; i < positions.length; i++) {
+            var marker = new AMap.Marker({
+                position: positions[i],
+                map: map,
+                content: '<div class="map-monitor-point"></div>'
+            });
+            
+            markers.push(marker);
+            
+            // 给标记点添加脉冲动画效果
+            marker.setAnimation('pulse');
+            
+            // 添加点击事件
+            marker.on('click', function(e) {
+                // 显示监控点信息
+                EventClick();
+            });
+        }
+        
+        // 将地图实例存储为全局变量，方便其他函数调用
+        window.amap = map;
+    }
+    
+    // 地图控件交互函数
+    function zoomFull() {
+        if (window.amap) {
+            window.amap.setZoom(11);
+            window.amap.setCenter([116.397428, 39.90923]);
+        }
+    }
+    
+    function zoomOut() {
+        if (window.amap) {
+            var currentZoom = window.amap.getZoom();
+            window.amap.setZoom(currentZoom + 1);
+        }
+    }
+    
+    function zoomIn() {
+        if (window.amap) {
+            var currentZoom = window.amap.getZoom();
+            window.amap.setZoom(currentZoom - 1);
+        }
+    }
+    
+    function showHeatMap() {
+        if (window.amap && !window.heatmap) {
+            // 模拟热力图数据
+            var heatmapData = [];
+            var points = 300;
+            var center = window.amap.getCenter();
+            var width = 0.04;  // 热力图宽度(经度)
+            var height = 0.04; // 热力图高度(纬度)
+            
+            for (var i = 0; i < points; i++) {
+                var lng = center.lng + Math.random() * width * 2 - width;
+                var lat = center.lat + Math.random() * height * 2 - height;
+                var count = Math.floor(Math.random() * 100);
+                
+                heatmapData.push({
+                    lng: lng,
+                    lat: lat,
+                    count: count
+                });
+            }
+            
+            // 初始化热力图
+            window.amap.plugin(["AMap.HeatMap"], function() {
+                window.heatmap = new AMap.HeatMap(window.amap, {
+                    radius: 25,
+                    opacity: [0, 0.8],
+                    gradient: {
+                        0.4: 'rgb(0, 255, 255)',
+                        0.65: 'rgb(0, 110, 255)',
+                        0.85: 'rgb(100, 0, 255)',
+                        1.0: 'rgb(200, 0, 255)'
+                    }
+                });
+                
+                window.heatmap.setDataSet({
+                    data: heatmapData,
+                    max: 100
+                });
+            });
+        } else if (window.heatmap) {
+            // 如果热力图已存在，切换显示/隐藏
+            if (window.heatmap.getMap()) {
+                window.heatmap.setMap(null);
+            } else {
+                window.heatmap.setMap(window.amap);
+            }
+        }
+    }
+    
+    function cancel() {
+        $(".check_increase").removeClass("check_increase_act");
+        $("#over_hide").show().siblings().hide();
+        $(".check_decrease").show();
+        $("#cage_cl").show();
+        $("#cage_cl1").hide();
+        BootstrapTable();
+    }
+    
+    // 原有的功能代码
 //    翻页模块
     $(".tcdPageCode").createPage({
         pageCount:5,
@@ -1760,49 +1893,6 @@
             content: 'saveFindTail.html'
         });
     }
-</script>
-<script>
-    // 百度地图API功能
-    var map = new BMap.Map("map");    // 创建Map实例
-    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
-    //添加地图类型控件
-    map.addControl(new BMap.MapTypeControl({
-        mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));
-    var mapStyle={
-        style:"dark"
-    };
-    map.setMapStyle(mapStyle);
-    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-    map.enableScrollWheelZoom(true);
-</script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
-<script>
-    // 初始化地图
-    $(function() {
-        // 创建地图实例
-        var map = new BMap.Map("map");
-        // 创建点坐标
-        var point = new BMap.Point(116.404, 39.915); // 北京市中心点坐标
-        // 初始化地图，设置中心点坐标和地图级别
-        map.centerAndZoom(point, 12);
-        // 开启鼠标滚轮缩放
-        map.enableScrollWheelZoom(true);
-        // 添加地图控件
-        map.addControl(new BMap.NavigationControl());    
-        map.addControl(new BMap.ScaleControl());    
-        map.addControl(new BMap.OverviewMapControl());    
-        map.addControl(new BMap.MapTypeControl());
-        // 设置地图样式
-        map.setMapStyle({
-            style: 'midnight' // 使用黑色风格，适合监控页面
-        });
-    });
 </script>
 
 </body>
