@@ -107,12 +107,38 @@ $(document).ready(function() {
         $(this).css("z-index", "1000");
         $(this).css("position", "relative");
     });
+    
+    // 添加遮罩层移除功能
+    // 监控DOM变化，自动移除遮罩层
+    setInterval(function() {
+        removeMapOverlays();
+    }, 300);
+    
+    // 按钮工具栏始终保持在最上层
+    $(".map_tool_outbox").css("z-index", "1500");
 });
+
+// 移除所有地图遮罩层
+function removeMapOverlays() {
+    $(".zTreeMask").remove();
+    $('body > div[id*="mask"]').remove();
+    $('body > div[class*="mask"]').remove();
+    $('body > .overlay').remove();
+    
+    // 确保按钮可点击
+    $(".map_tool").each(function() {
+        $(this).css("z-index", "1000");
+        $(this).css("position", "relative");
+    });
+}
 
 // 解决地图遮罩问题
 function fixMapOverlay() {
     // 检查DOM中是否有遮罩层，如果有则移除
     $('.map_overlay').remove();
+    
+    // 移除所有遮罩层
+    removeMapOverlays();
 }
 
 // 页面加载完成后执行
@@ -122,7 +148,13 @@ window.onload = function() {
     // 确保数据分析显示正常
     setTimeout(function() {
         $('.flow-data-container').css('visibility', 'visible');
+        removeMapOverlays();
     }, 500);
+    
+    // 添加点击事件监听，确保点击任何地方后都检查并移除遮罩
+    document.addEventListener('click', function() {
+        setTimeout(removeMapOverlays, 100);
+    });
 };
 
 //    Xabin_end

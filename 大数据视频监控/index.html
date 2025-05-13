@@ -12,7 +12,7 @@
     <script src="js/laydate.js"></script>
     <script src="js/Home_page.js"></script>
     <!-- 添加高德地图API -->
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d7dc89416cb76d315e129827e9223d8e"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d7dc89416cb76d315e129827e9223d8e&plugin=AMap.ControlBar,AMap.ToolBar"></script>
     <meta charset="UTF-8">
     <title>大数据管理平台</title>
 
@@ -1898,6 +1898,45 @@
     map.setMapStyle(mapStyle);
     map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);
+</script>
+
+<script>
+    var map;
+    function mapInit(){
+        map = new AMap.Map('map', {
+            rotateEnable: true,
+            pitchEnable: true,
+            zoom: 17,
+            pitch: 50,
+            rotation: -15,
+            viewMode: '3D', //开启3D视图
+            zooms: [2, 20],
+            center: [106.427, 29.825] // 重庆市北碚区西南大学坐标
+        });
+        
+        // 添加3D控件
+        var controlBar = new AMap.ControlBar({
+            position: {
+                right: '10px',
+                top: '10px'
+            }
+        });
+        controlBar.addTo(map);
+        
+        // 添加工具条
+        var toolBar = new AMap.ToolBar({
+            position: {
+                right: '40px',
+                top: '110px'
+            }
+        });
+        toolBar.addTo(map);
+    }
+    
+    // 页面加载完成后初始化地图
+    window.onload = function() {
+        mapInit();
+    }
 </script>
 
 </body>
