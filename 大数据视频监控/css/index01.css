@@ -263,6 +263,9 @@
 /* 修复右边栏字体格式冲突 */
 .flow_conter_outbox {
     font-family: 'Microsoft YaHei', sans-serif !important;
+    display: block !important;
+    visibility: visible !important;
+    z-index: 1 !important;
 }
 
 .flow_conter_outbox span, 
@@ -275,6 +278,9 @@
 .one_flow_num {
     font-family: 'Arial', sans-serif !important;
     font-weight: normal;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 /* 表格样式统一 */
@@ -307,9 +313,9 @@ table.t_list td {
 
 /* 修复数据显示样式 */
 .data_show_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     padding: 0;
     margin: 10px 0;
     width: 100%;
@@ -319,9 +325,9 @@ table.t_list td {
 .data_cage {
     width: 30px;
     height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     background-image: url(../img/number_bg.png);
     background-size: cover;
     color: #fff;
@@ -336,4 +342,95 @@ table.t_list td {
     margin: 10px 0;
     padding: 0 10px;
     text-align: left;
+}
+
+/* 修复遮罩层导致按钮无法点击的问题 */
+.display_box {
+    z-index: 1000 !important; /* 确保显示框在顶层 */
+    pointer-events: auto !important; /* 确保可以点击 */
+}
+
+.display_type_box, .city_chose_box, .trajectory_box {
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+}
+
+.map_title_box {
+    pointer-events: none; /* 允许点击穿透标题栏 */
+}
+
+.map_title_box .map_title {
+    pointer-events: auto; /* 但标题文字可以点击 */
+}
+
+/* 确保地图工具栏可点击 */
+.map_tools {
+    z-index: 900 !important;
+    pointer-events: auto !important;
+}
+
+/* 优化右侧栏 */
+.right_cage {
+    overflow: visible !important;
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+/* 新增数据显示样式 */
+.data-counter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.data-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-digit {
+    width: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/number_bg.png);
+    background-size: cover;
+    color: #fff;
+    font-size: 24px;
+    margin: 0 2px;
+}
+
+.data-separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    margin: 0 2px;
+    width: 10px;
+}
+
+.flow-data-container {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.flow-data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.flow-data-label {
+    font-size: 14px;
+}
+
+.flow-data-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4cae4c;
 }

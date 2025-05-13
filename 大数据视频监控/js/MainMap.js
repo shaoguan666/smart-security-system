@@ -1,6 +1,4 @@
-﻿
-
-var layer_vector, layer_image, layer_POI, map,layer_SC;
+﻿var layer_vector, layer_image, layer_POI, map,layer_SC;
 var layer_RouteLine, layer_RoutePoi;
 var graphicLayer_RouteLine;
 var redColor, blueColor;
@@ -11,8 +9,7 @@ var layerUrl_cd_raster = "http://125.70.9.221:8020/cdmap/rest/services/BASEMAP/R
 var layerUrl_POI = "http://123.146.170.78:6080/arcgis/rest/services/SCPOI2/MapServer/1";
 var layerUrl_SC = "http://123.146.170.78:6080/arcgis/rest/services/SCPOI2/MapServer/";
 
-
-
+// 修复地图初始化和交互问题
 dojoConfig = {
     parseOnLoad: true,
     packages: [{
@@ -20,6 +17,58 @@ dojoConfig = {
         location: this.location.pathname.replace(/\/[^/]+$/, "") + "/js/tdlib"
     }]
 };
+
+// 使用高德地图API替换ArcGIS
+document.addEventListener('DOMContentLoaded', function() {
+    // 检查地图容器是否存在
+    var mapContainer = document.getElementById('map');
+    if (mapContainer) {
+        initAMap();
+    } else {
+        console.error('地图容器不存在');
+    }
+});
+
+// 初始化高德地图
+function initAMap() {
+    // 创建地图实例
+    var map = new AMap.Map('map', {
+        zoom: 11,
+        center: [116.397428, 39.90923], // 默认北京中心
+        viewMode: '3D'
+    });
+    
+    // 添加控件
+    map.plugin(['AMap.ToolBar', 'AMap.Scale'], function() {
+        // 添加工具条
+        var toolbar = new AMap.ToolBar({
+            position: 'RB'
+        });
+        map.addControl(toolbar);
+        
+        // 添加比例尺
+        var scale = new AMap.Scale();
+        map.addControl(scale);
+    });
+    
+    // 存储地图实例以供其他函数使用
+    window.map = map;
+    
+    // 解决点击事件问题
+    map.on('click', function(e) {
+        if (window.isSetBufferCenter) {
+            $("#txtBufferX").val(e.lnglat.getLng());
+            $("#txtBufferY").val(e.lnglat.getLat());
+            showEventPoint(e.lnglat.getLng(), e.lnglat.getLat());
+            window.isSetBufferCenter = false;
+        }
+        var txt = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+        $("#txtCoord").val(txt);
+    });
+    
+    console.log('高德地图初始化完成');
+}
+
 require(["esri/map", "tdlib/TDTLayer", "tdlib/TDTRasterLayer", "tdlib/TDTAnnoLayer", "esri/layers/FeatureLayer","esri/InfoTemplate",
     "esri/geometry/Point", "esri/layers/GraphicsLayer", "esri/Color","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/domReady!"],
     function (Map, TDTLayer, TDTRasterLayer, TDTAnnoLayer, FeatureLayer, InfoTemplate, Point, GraphicsLayer, Color, ArcGISDynamicMapServiceLayer) {
@@ -260,28 +309,26 @@ function flashRoute() {
 
 //全图
 function zoomFull() {
-    require(["esri/geometry/Point"], function (Point) {
-        var pt = new Point({
-            x: 102.1750010681153,
-            y: 29.958719635009814,
-            spatialReference: map.spatialReference
-        });
-        map.centerAndZoom(pt, 5);
-    });
+    if (window.map) {
+        window.map.setZoom(11);
+        window.map.setCenter([116.397428, 39.90923]); // 默认北京中心
+    }
 }
 
 //放大
 function zoomOut() {
-    var zm = map.getZoom() + 1;
-    if (zm <20)
-        map.setZoom(zm);
+    if (window.map) {
+        var zoom = window.map.getZoom();
+        window.map.setZoom(zoom + 1);
+    }
 }
 
 //缩小
 function zoomIn() {
-    var zm = map.getZoom() - 1;
-    if (zm > 4)
-        map.setZoom(zm);
+    if (window.map) {
+        var zoom = window.map.getZoom();
+        window.map.setZoom(zoom - 1);
+    }
 }
 
 
