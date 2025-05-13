@@ -612,3 +612,27 @@ img.video_around {
     overflow: hidden;
     position: relative;
 }
+
+/* 强制应用字体样式 */
+.right_cage *,
+.right_cage div,
+.right_cage span,
+.right_cage li,
+.right_cage ul,
+.right_cage table,
+.right_cage td,
+.right_cage th,
+.right_cage p {
+    font-family: "Microsoft YaHei", sans-serif !important;
+}
+
+.right_cage .flow-data-value,
+.right_cage .data-digit,
+.right_cage .data-separator {
+    font-family: "Arial", sans-serif !important;
+}
+
+.cage_cl {
+    width: 100%;
+    margin-bottom: 10px;
+}

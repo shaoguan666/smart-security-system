@@ -110,11 +110,35 @@ a{text-decoration: none}
     border: 2px solid #0b7ff3;
 }
 
-/* 调整右侧数据显示 */
+/* 修复右侧数据显示 */
 .right_cage {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+}
+
+/* 修正数据显示样式 */
+.data_show_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 10px 0;
+    width: 100%;
+    list-style: none;
+}
+
+.data_cage {
+    width: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/number_bg.png);
+    background-size: cover;
+    color: #fff;
+    font-size: 24px;
+    margin: 0 2px;
 }
 
 .depart_number_box {
@@ -122,25 +146,43 @@ a{text-decoration: none}
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 0 10px;
 }
 
 .depart_number_cage {
     width: 48%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    padding: 5px 0;
+    list-style: none;
 }
 
 .depart_name {
-    flex: 0 0 auto;
-    margin-right: 5px;
-    white-space: nowrap;
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .depart_number {
-    flex: 1 1 auto;
-    text-align: right;
-    white-space: nowrap;
+    color: #4b8df8;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 分析标题样式 */
+.analysis {
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 0 10px;
+    text-align: left;
 }
 
 /* 修复流量表格样式 */
@@ -162,16 +204,6 @@ a{text-decoration: none}
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-/* 高德地图监控点样式 */
-.map-monitor-point {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(0, 200, 255, 0.8);
-    box-shadow: 0 0 8px rgba(0, 200, 255, 0.6);
-    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .index_right{background-color: rgba(2,8,23,0.54);width: 626px;height: 790px;margin: 39px 0 0 0;border-radius: 10px}
@@ -237,3 +269,78 @@ a{text-decoration: none}
 .user_top_middle td{line-height: 32px !important;color: #dedfe0}
 .user_top_middle tbody tr{border-bottom: 1px #3490ba solid}
 .user_right_left{width: 50%;height: 100%}
+
+/* 新的右侧数据显示样式 */
+.data-counter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.data-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-digit {
+    width: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/number_bg.png);
+    background-size: cover;
+    color: #fff;
+    font-size: 24px;
+    margin: 0 2px;
+}
+
+.data-separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    margin: 0 2px;
+    width: 10px;
+}
+
+.flow-data-container {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.flow-data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flow-data-label {
+    color: #fff;
+    font-size: 14px;
+}
+
+.flow-data-value {
+    color: #4b8df8;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dataAllBorder02 {
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+/* 高德地图监控点样式 */
+.map-monitor-point {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 200, 255, 0.8);
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
