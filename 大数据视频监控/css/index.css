@@ -159,51 +159,6 @@ a{text-decoration: none}
 #demo p { background:rgba(0,0,0,.3); margin:0 auto; padding:20px 20px 20px 200px; border-radius:1000px; font-size:16px; }
 #demo p span { margin:0 15px;}
 
-
-/*游客分析*/
-.manage_left{
-    width: 32.5%;
-    height: 98%;
-    background-color: rgba(2,8,23,0.54);
-    /*margin-top:3%;*/
-    margin-left:0.6%;
-    border-radius: 10px;
-    position: relative}
-.manage_line1{border-radius: 10px;border: 1px #0174f5 solid;margin: 1px;height: 100%}
-.manage_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 100%;padding-top: 5%}
-.manage_left_nav{position: absolute;top:1px;width: 42%;height: 3.5%;left:24%}
-.manage_left_top{height: 33%}
-.manage_top_left{width: 33.3%;height: 100%;}
-.manage_top_left p{text-align: center;color: #fff;font-size: 12px}
-.manage_top_middle{height: 33%;width: 100%;}
-.manage_top_middle p{text-align: center;color: #fff;font-size: 12px}
-
-.manage_top_middle thead tr{border: none !important;}
-/*.manage_top_middle{border: 1px #3490ba solid !important; }*/
-.manage_top_middle th,.manage_top_middle td,.dataAllBorder20 td{line-height: 32px !important;padding: 0 !important;text-align: center;font-size: 14px;-webkit-transform:scale(0.8);border: 1px #3490ba solid !important;color: #fff;}
-.manage_top_middle thead{background-color: #3490ba}
-.manage_top_middle td{line-height: 32px !important;color: #dedfe0}
-.manage_top_middle tbody tr{border-bottom: 1px #3490ba solid}
-
-/*管理员工分析*/
-.user_left{width: 32.5%;height: 99%;background-color: rgba(2,8,23,0.54);border-radius: 10px;position: relative;}
-.user_line1{border-radius: 10px;border: 1px #0174f5 solid;margin: 1px;height: 100%}
-.user_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 100%;padding: 24px 8px 0 8px}
-.user_left_nav{position: absolute;top:1px;left:29%;width: 354px;height: 27px;}
-.user_left_top{height: 33%}
-.user_top_left{width: 33.3%;height: 100%;}
-.user_top_left p{text-align: center;color: #fff;font-size: 12px}
-.user_top_middle{height: 33%;width: 100%}
-.user_top_middle p{text-align: center;color: #fff;font-size: 12px}
-
-.user_top_middle thead tr{border: none !important;}
-/*.manage_top_middle{border: 1px #3490ba solid !important; }*/
-.user_top_middle th,.user_top_middle td{line-height: 32px !important;padding: 0 !important;text-align: center;font-size: 14px;-webkit-transform:scale(0.8);border: 1px #3490ba solid !important;color: #fff;}
-.user_top_middle thead{background-color: #3490ba}
-.user_top_middle td{line-height: 32px !important;color: #dedfe0}
-.user_top_middle tbody tr{border-bottom: 1px #3490ba solid}
-.user_right_left{width: 50%;height: 100%}
-
 /* 新的右侧数据显示样式 */
 .data-counter-container {
     width: 100%;

@@ -12,7 +12,42 @@
     <script src="js/laydate.js"></script>
     <script src="js/Home_page.js"></script>
     <!-- 添加高德地图API -->
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d7dc89416cb76d315e129827e9223d8e&plugin=AMap.ControlBar,AMap.ToolBar"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d7dc89416cb76d315e129827e9223d8e&plugin=AMap.Weather,AMap.ControlBar,AMap.ToolBar"></script>
+    <style>
+        /* 添加地图点击样式 */
+        .map-marker {
+            width: 25px;
+            height: 34px;
+            background-color: #1a73e8;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        .map-marker:after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+        /* 预报样式 */
+        .weather-day {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+        .weather-icon {
+            display: inline-block;
+            width: 18px;
+            text-align: center;
+            margin-right: 5px;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>大数据管理平台</title>
 
@@ -22,11 +57,9 @@
     <div class="index_nav" >
         <ul style="height: 30px; margin-bottom: 0px;">
             <li class="l_left total_chose_fr nav_active">实时监测</li>
-            <li class="l_left total_chose_pl" >统计分析一</li>
-            <li class="l_left total_chose_pl">统计分析二</li>
-            <li class="r_right total_chose_pl">统计分析三</li>
-            <li class="r_right total_chose_pl">统计分析四</li>
-            <li class="r_right total_chose_pl">统计分析五</li>
+            <li class="l_left total_chose_pl">营销分析</li>
+            <li class="l_left total_chose_pl">收入支出分析</li>
+            <li class="r_right total_chose_pl">安全分析</li>
         </ul>
         <div class="total_chose_box" style="display: none;">
             <div style="height: 32px;"></div>
@@ -92,16 +125,16 @@
                         <div class="message_scroll_box">
                             <div class="message_scroll">
                             <div class="scroll_top">
-                                <span class="scroll_title">数据流量警示</span>
+                                <span class="scroll_title">环境污染警示</span>
                                 <span class="scroll_level scroll_level01">一级</span>
                                 <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                                <span class="scroll_timer">25-05-13/9:52</span>
                             </div>
                             <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
+                                <a class="localize_title">排放污水含铅元素超标</a>
                             </div>
                             <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
+                                <a class="localize_msg">特瑞熙新材料化工厂</a>
                             </div>
                         </div>
                             <div class="message_scroll">
@@ -109,41 +142,41 @@
                                     <span class="scroll_title">数据流量警示</span>
                                     <span class="scroll_level scroll_level03">三级</span>
                                     <a class="localize"></a>
-                                    <span class="scroll_timer">17-09-13/9:52</span>
+                                    <span class="scroll_timer">25-05-13/9:52</span>
                                 </div>
                                 <div class="msg_cage">
                                     <a class="localize_title">下载大量视频</a>
                                 </div>
                                 <div class="msg_cage">
-                                    <a class="localize_msg">xxx视频网站</a>
+                                    <a class="localize_msg">www.baidu.xingchen.com</a>
                                 </div>
                             </div>
                             <div class="message_scroll">
                                 <div class="scroll_top">
-                                    <span class="scroll_title">数据流量警示</span>
+                                    <span class="scroll_title">犯罪警示</span>
                                     <span class="scroll_level scroll_level02">二级</span>
                                     <a class="localize"></a>
-                                    <span class="scroll_timer">17-09-13/9:52</span>
+                                    <span class="scroll_timer">25-05-13/9:52</span>
                                 </div>
                                 <div class="msg_cage">
-                                    <a class="localize_title">下载大量视频</a>
+                                    <a class="localize_title">2584615954账户取走大量现金</a>
                                 </div>
                                 <div class="msg_cage">
-                                    <a class="localize_msg">xxx视频网站</a>
+                                    <a class="localize_msg">中国农业银行</a>
                                 </div>
                             </div>
                             <div class="message_scroll">
                                 <div class="scroll_top">
-                                    <span class="scroll_title">数据流量警示</span>
+                                    <span class="scroll_title">踩踏事故警示</span>
                                     <span class="scroll_level scroll_level01">一级</span>
                                     <a class="localize"></a>
-                                    <span class="scroll_timer">17-09-13/9:52</span>
+                                    <span class="scroll_timer">25-05-13/9:52</span>
                                 </div>
                                 <div class="msg_cage">
-                                    <a class="localize_title">下载大量视频</a>
+                                    <a class="localize_title">人员过于密集</a>
                                 </div>
                                 <div class="msg_cage">
-                                    <a class="localize_msg">xxx视频网站</a>
+                                    <a class="localize_msg">解放碑附近</a>
                                 </div>
                             </div>
                         </div>
@@ -289,9 +322,6 @@
                                     <a class="map_tool_inner" onclick="Search()" title="搜索" style="background-position-x:-468px"></a>
                                 </span>
                             <span class="map_tool">
-                                    <a class="map_tool_inner" onclick="cancel()" id="fresh_tool" title="清空" style="background-position-x:-396px"></a>
-                                </span>
-                            <span class="map_tool">
                                <input type="text" id="txtCoord" style="width:150px;visibility:hidden" />
                             </span>
                         </div>
@@ -339,34 +369,9 @@
                 <!--顶部切换位置-->
                 <div class="dataAllBorder01 cage_cl" style="margin-top: 9% !important; height: 24%">
                     <div class="dataAllBorder02" id="cage_cl">
-                        <div class="analysis">一天流量：</div>
-                        <div class="data-counter-container">
-                            <div class="data-counter">
-                                <div class="data-digit">0</div>
-                                <div class="data-digit">0</div>
-                                <div class="data-separator">,</div>
-                                <div class="data-digit">0</div>
-                                <div class="data-digit">0</div>
-                                <div class="data-digit">2</div>
-                            </div>
-                        </div>
-                        <div class="flow-data-container">
-                            <div class="flow-data-row">
-                                <div class="flow-data-label">流量一：</div>
-                                <div class="flow-data-value">3,238</div>
-                            </div>
-                            <div class="flow-data-row">
-                                <div class="flow-data-label">流量二：</div>
-                                <div class="flow-data-value">1,630</div>
-                            </div>
-                            <div class="flow-data-row">
-                                <div class="flow-data-label">流量三：</div>
-                                <div class="flow-data-value">4,251</div>
-                            </div>
-                            <div class="flow-data-row">
-                                <div class="flow-data-label">流量四：</div>
-                                <div class="flow-data-value">24</div>
-                            </div>
+                        <div class="analysis">西南大学天气预报</div>
+                        <div id="weather-forecast" style="padding:5px;overflow:auto;color:#fff;font-size:13px;">
+                            <p id="forecast-content">加载中，请稍候...</p>
                         </div>
                     </div>
                     <div class="dataAllBorder02 over_hide" id="cage_cl1" style="display: none" >
@@ -1128,234 +1133,7 @@
             </div>
         </div>
 
-        <div class="inner" style="display: none">
-            <div class="manage_left l_left">
-                <!--<div class="manage_left_nav"><img src="img/left_nav.png"/></div>-->
-                <div class="manage_line1">
-                    <div class="manage_line2">
-                        <div class="manage_top_middle">
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <td>xxxx总数</td>
-                                    <td colspan="3">25414人</td>
-                                </tr>
-                                <tr>
-                                    <td>xxxxx</td>
-                                    <td colspan="3">省内游客</td>
-                                </tr>
-                                <tr>
-                                    <td>xxxxx</td>
-                                    <td colspan="3">青年</td>
-                                </tr>
-                                <tr>
-                                    <td>男性游客</td>
-                                    <td>5424人</td>
-                                    <td>女性游客</td>
-                                    <td>5457人</td>
-                                </tr>
-                                <tr>
-                                    <td>团队游客</td>
-                                    <td>5424人</td>
-                                    <td>散客</td>
-                                    <td>5457人</td>
-                                </tr>
-                                <tr>
-                                    <td>同比</td>
-                                    <td>下降5%</td>
-                                    <td>环比</td>
-                                    <td>上升5.6%</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <p>xxxxx数据汇总</p>
-                        </div>
-                        <div class="manage_left_top">
-                            <div class="manage_top_left l_left">
-                                <div id="container2" style="height: 90%"></div>
-                                <p>xxxxx分析</p>
-                            </div>
-                            <div class="manage_top_left l_left">
-                                <div id="container1" style="height: 90%"></div>
-                                <p>xxxx分析</p>
-                            </div>
-                            <div class="manage_top_left l_left">
-                                <div id="container3" style="height:90%"></div>
-                                <p>xxxx分析</p>
-                            </div>
-
-                        </div>
-                        <div class="manage_top_middle">
-                            <div id="container4" style="height: 90%"></div>
-                            <p>xxxx数据分析</p>
-                        </div>
-                        <!--<div class="manage_top_middle l_left">-->
-                        <!--<div id="container5" style="height: 90%"></div>-->
-                        <!--<p>天气——游客数据分析</p>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-            </div>
-            <div class="manage_left l_left">
-                <!--<div class="manage_left_nav"><img src="img/left_nav.png"/></div>-->
-                <div class="manage_line1">
-                    <div class="manage_line2">
-                        <div class="manage_top_middle l_left">
-                            <div id="container9" style="height: 90%"></div>
-                            <p>xxxx情况</p>
-                        </div>
-                        <div class="manage_top_middle l_left">
-                            <div id="container10" style="height: 90%"></div>
-                            <p>xxxx分析</p>
-                        </div>
-                        <div class="manage_top_middle l_left">
-                            <div id="container11" style="height: 90%"></div>
-                            <p>xxxx分析</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="manage_left l_left">
-                <!--<div class="manage_left_nav"><img src="img/left_nav.png"/></div>-->
-                <div class="manage_line1">
-                    <div class="manage_line2">
-                        <div class="manage_top_middle">
-                            <div id="container12" style="height: 90%"></div>
-                            <p>xxxxx排行</p>
-                        </div>
-                        <div class="manage_top_middle">
-                            <div id="container6" style="height: 90%"></div>
-                            <p>xxxx数据分析</p>
-                        </div>
-                        <div class="manage_top_middle l_left">
-                            <div id="container5" style="height: 90%"></div>
-                            <p>xxxxx数据分析</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="inner" style="display: none;">
-            <div class="user_left l_left" style=" margin-left: 0.6%">
-                <!--<div class="user_left_nav"><img src="../images/left_nav.png"/></div>-->
-                <div class="user_line1">
-                    <div class="user_line2">
-                        <div class="user_top_middle">
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <td>xxxx总数</td>
-                                    <td colspan="3">965人</td>
-                                </tr>
-                                <tr>
-                                    <td>xxxx工作人员</td>
-                                    <td>625人</td>
-                                    <td>xxxx工作人员</td>
-                                    <td>340人</td>
-                                </tr>
-                                <tr>
-                                    <td>xxxx</td>
-                                    <td>急救部</td>
-                                    <td>xxxx工作人员</td>
-                                    <td>xxx（99%）</td>
-                                </tr>
-                                <tr>
-                                    <td>xxx</td>
-                                    <td>售票部</td>
-                                    <td>xxxx</td>
-                                    <td>安保部</td>
-                                </tr>
-                                <tr>
-                                    <td>xxx</td>
-                                    <td>李焕</td>
-                                    <td>xxx</td>
-                                    <td>周伟</td>
-                                </tr>
-                                <tr>
-                                    <td>xxxx主要原因</td>
-                                    <td>人为损坏</td>
-                                    <td>xxx处理情况</td>
-                                    <td>均及时进行设备处理</td>
-                                </tr>
-                                <!--<tr>-->
-                                <!--<td>年度最佳员工</td>-->
-                                <!--<td>李进</td>-->
-                                <!--<td>重点观察员工</td>-->
-                                <!--<td>周伟</td>-->
-                                <!--</tr>-->
-
-                                </tbody>
-                            </table>
-                            <p>xxx管理汇总</p>
-                        </div>
-                        <div class="user_left_top">
-                            <div class="user_top_left l_left">
-                                <div id="userContainerSex" style="height: 90%"></div>
-                                <p>工作人员性别占比</p>
-                            </div>
-                            <div class="user_top_left l_left">
-                                <div id="userContainerManage" style="height: 90%"></div>
-                                <p>各部门人员占比</p>
-                            </div>
-                            <div class="user_top_left l_left">
-                                <div id="userContainerAge" style="height:90%"></div>
-                                <p>工作人员年龄段占比</p>
-                            </div>
-
-                        </div>
-                        <div class="user_top_middle">
-                            <div id="userContainerAttendance" style="height: 90%"></div>
-                            <p>景区各部门出勤情况</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="user_left l_left" style=" margin-left: 0.6%">
-                <!--<div class="manage_left_nav"><img src="../images/left_nav.png"/></div>-->
-                <div class="user_line1">
-                    <div class="user_line2">
-                        <div class="user_top_middle l_left">
-                            <div id="userContainerPersonal" style="height: 90%"></div>
-                            <p>xxx排行</p>
-                        </div>
-                        <div class="user_top_middle l_left">
-                            <div id="userContainerFlow" style="height: 90%"></div>
-                            <p>xxx分析</p>
-                        </div>
-                        <div class="user_top_middle l_left">
-                            <div id="userContainerIllegal" style="height: 90%"></div>
-                            <p>xxxx分析</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="user_left l_left" style=" margin-left: 0.6%">
-                <!--<div class="manage_left_nav"><img src="../images/left_nav.png"/></div>-->
-                <div class="user_line1">
-                    <div class="user_line2">
-                        <div class="user_top_middle">
-                            <div id="userContainerComplaint" style="height: 90%"></div>
-                            <p>xxxx情况</p>
-                        </div>
-                        <div class="user_top_middle">
-                            <div id="userContainerPrize" style="height: 90%"></div>
-                            <p>xxx分析</p>
-                        </div>
-                        <div class="user_top_middle l_left">
-                            <div class="user_right_left l_left">
-                                <div id="userContainerReason" style="height: 90%"></div>
-                                <p>xxx原因分析</p>
-                            </div>
-                            <div class="user_right_left l_left">
-                                <div id="userContainerHandle" style="height: 90%"></div>
-                                <p>故障处理情况</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- 游客分析和管理员工分析相关内容已删除 -->
 
     </div>
 </div>
@@ -1382,59 +1160,107 @@
             number = 8
         }
         
-        // 初始化高德地图
-        initAMap();
+        // 等待DOM完全加载后初始化地图
+        setTimeout(function() {
+            initAMap();
+        }, 500);
     });
     
     // 高德地图初始化
     function initAMap() {
-        // 创建地图实例
-        var map = new AMap.Map('map', {
-            zoom: 11,           // 地图缩放级别
-            center: [116.397428, 39.90923], // 地图中心点坐标，默认为北京市中心
-            viewMode: '3D',     // 使用3D视图
-            mapStyle: 'amap://styles/dark', // 设置地图样式为黑色，适合监控系统
-            resizeEnable: true  // 支持自动调整大小
-        });
-        
-        // 添加缩放和平移控件
-        map.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
-            map.addControl(new AMap.ToolBar());
-            map.addControl(new AMap.Scale());
-        });
-        
-        // 添加模拟监控点标记
-        var markers = [];
-        var positions = [
-            [116.368904, 39.913423],
-            [116.382122, 39.901176],
-            [116.387271, 39.922501],
-            [116.398258, 39.914714],
-            [116.407261, 39.908861]
-        ];
-        
-        // 创建自定义点标记内容
-        for (var i = 0; i < positions.length; i++) {
+        try {
+            console.log("开始初始化地图...");
+            var swuLngLat = [106.427, 29.825]; // 西南大学坐标
+            
+            // 创建地图实例
+            var map = new AMap.Map('map', {
+                zoom: 17,
+                center: swuLngLat,
+                pitch: 50,
+                rotation: -15,
+                viewMode: '3D',
+                // 移除黑色地图样式
+                resizeEnable: true
+            });
+            
+            console.log("地图初始化完成，添加控件...");
+            
+            // 添加3D控件
+            var controlBar = new AMap.ControlBar({
+                position: {
+                    right: '10px',
+                    top: '10px'
+                }
+            });
+            controlBar.addTo(map);
+            
+            // 添加工具条
+            var toolBar = new AMap.ToolBar({
+                position: {
+                    right: '40px',
+                    top: '110px'
+                }
+            });
+            toolBar.addTo(map);
+            
+            console.log("开始创建西南大学标记点...");
+            
+            // 添加西南大学标记点 - 使用自定义内容
             var marker = new AMap.Marker({
-                position: positions[i],
+                position: swuLngLat,
                 map: map,
-                content: '<div class="map-monitor-point"></div>'
+                title: '西南大学',
+                content: '<div class="map-marker" id="swu-marker"></div>',
+                offset: new AMap.Pixel(-12, -30)
             });
             
-            markers.push(marker);
+            // 显示固定的天气信息
+            document.getElementById('forecast-content').innerHTML = 
+                '<div style="padding:10px;">' +
+                '<div class="weather-day">' + 
+                '<span class="weather-icon">☀️</span>' +
+                '05-20 ' + 
+                '<span style="display:inline-block;min-width:60px;">晴</span> ' + 
+                '<span style="float:right">18~26℃</span>' +
+                '</div>' +
+                '<div class="weather-day">' + 
+                '<span class="weather-icon">⛅</span>' +
+                '05-21 ' + 
+                '<span style="display:inline-block;min-width:60px;">多云</span> ' + 
+                '<span style="float:right">17~28℃</span>' +
+                '</div>' +
+                '<div class="weather-day">' + 
+                '<span class="weather-icon">🌦️</span>' +
+                '05-22 ' + 
+                '<span style="display:inline-block;min-width:60px;">小雨</span> ' + 
+                '<span style="float:right">16~24℃</span>' +
+                '</div>' +
+                '<div class="weather-day">' + 
+                '<span class="weather-icon">☀️</span>' +
+                '05-23 ' + 
+                '<span style="display:inline-block;min-width:60px;">晴</span> ' + 
+                '<span style="float:right">18~29℃</span>' +
+                '</div>' +
+                '</div>';
             
-            // 给标记点添加脉冲动画效果
-            marker.setAnimation('pulse');
+            // 将地图实例存储为全局变量
+            window.amap = map;
             
-            // 添加点击事件
-            marker.on('click', function(e) {
-                // 显示监控点信息
-                EventClick();
-            });
+        } catch (error) {
+            console.error("地图初始化过程中出错:", error);
+            document.getElementById('forecast-content').innerHTML = '地图初始化失败：' + error.message;
         }
-        
-        // 将地图实例存储为全局变量，方便其他函数调用
-        window.amap = map;
+    }
+    
+    // 移除不需要的天气函数
+    // 加载预报天气
+    function loadForecastWeather(weather) {
+        // 函数保留但内部逻辑移除
+    }
+    
+    // 加载实时天气并显示
+    function loadLiveWeather(weather, map, marker) {
+        // 函数保留但内部逻辑移除  
     }
     
     // 地图控件交互函数
@@ -1508,14 +1334,7 @@
         }
     }
     
-    function cancel() {
-        $(".check_increase").removeClass("check_increase_act");
-        $("#over_hide").show().siblings().hide();
-        $(".check_decrease").show();
-        $("#cage_cl").show();
-        $("#cage_cl1").hide();
-        BootstrapTable();
-    }
+    // 清空函数已移除
     
     // 原有的功能代码
 //    翻页模块
@@ -1551,10 +1370,7 @@
         });
         BootstrapTable();
         Echarts();
-        $("#fresh_tool").click(function(event){
-            event.stopPropagation();
-            cancel();
-        })
+        // 清空按钮事件已移除
 
     });
     function EventClick(){
@@ -1570,17 +1386,7 @@
         $("#car_check_in").hide();
         BootstrapTable();
     }
-    function cancel(e){
-        $(".check_increase").removeClass("check_increase_act");
-        $("#over_hide").show().siblings().hide();
-        $(".check_decrease").show();
-        $("#cage_cl").show();
-        $("#cage_cl1").hide();
-//        $("#cage_cl").show();
-//        $("#over_hide1").show();
-//        $("#map_title_innerbox").show();
-        BootstrapTable();
-    }
+    // 清空函数已移除
 
     //    地址检索
     $(".addition_check_btn").click(function () {
