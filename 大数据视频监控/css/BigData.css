@@ -614,15 +614,7 @@ img.video_around {
 }
 
 /* 强制应用字体样式 */
-.right_cage *,
-.right_cage div,
-.right_cage span,
-.right_cage li,
-.right_cage ul,
-.right_cage table,
-.right_cage td,
-.right_cage th,
-.right_cage p {
+.right_cage * {
     font-family: "Microsoft YaHei", sans-serif !important;
 }
 
@@ -635,4 +627,38 @@ img.video_around {
 .cage_cl {
     width: 100%;
     margin-bottom: 10px;
+}
+
+.depart_number_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.depart_number_cage {
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    list-style: none;
+}
+
+.depart_name {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.depart_number {
+    color: #4b8df8;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }

@@ -86,39 +86,29 @@ a{text-decoration: none}
 .middle_bot_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 264px;padding: 5px;background-color: rgba(17,25,69,0.54) }
 .middle_bot_left video {object-fit:fill; width:100%;height:100%;}
 
-<<<<<<< HEAD
-/* 修复左侧视频图像排列 */
-.video_cage {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    height: 100%;
+/* 固定视频显示样式 */
+.video-static-container {
     width: 100%;
-    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #001133;
+    overflow: hidden;
 }
 
-.video_around {
-    width: 48%;
-    height: 48%;
+.video-static-display {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: 5px;
     display: block;
 }
 
-.video_around_chose {
-    border: 2px solid #0b7ff3;
-}
-
-/* 修复右侧数据显示 */
+/* 确保右侧文字正常显示 */
 .right_cage {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif !important;
 }
 
-/* 修正数据显示样式 */
 .data_show_box {
     display: flex;
     justify-content: center;
@@ -142,42 +132,6 @@ a{text-decoration: none}
     margin: 0 2px;
 }
 
-.depart_number_box {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 10px;
-}
-
-.depart_number_cage {
-    width: 48%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 5px 0;
-    list-style: none;
-}
-
-.depart_name {
-    color: #fff;
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.depart_number {
-    color: #4b8df8;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-/* 分析标题样式 */
 .analysis {
     color: #fff;
     font-size: 16px;
@@ -186,29 +140,6 @@ a{text-decoration: none}
     text-align: left;
 }
 
-/* 修复流量表格样式 */
-.dataAllBorder20 {
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-.dataAllBorder20 table {
-    width: 100%;
-    table-layout: fixed;
-}
-
-.dataAllBorder20 th, 
-.dataAllBorder20 td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-=======
->>>>>>> parent of 9479e49 (1)
 .index_right{background-color: rgba(2,8,23,0.54);width: 626px;height: 790px;margin: 39px 0 0 0;border-radius: 10px}
 .right_line1{border-radius: 10px;border: 1px #0174f5 solid;margin: 1px;height: 788px}
 .right_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 784px}
