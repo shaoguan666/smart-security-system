@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="js/artDialog/skins/default.css" type="text/css"/>
     <script src="js/laydate.js"></script>
     <script src="js/Home_page.js"></script>
+    <!-- 添加百度地图API -->
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=Kc5ThMmNz5UkTgdcQG9jliey8UTW2voO"></script>
     <meta charset="UTF-8">
     <title>大数据管理平台</title>
 
@@ -385,7 +387,7 @@
                             <li class="location_msg02 location_single">事件级别：化学气体泄漏</a></li>
                             <li class="location_msg02 location_double">案发时间：<a href="#" style="color: #cdd6db;">2017-09-10<br>11:40</a></li>
                             <li class="location_msg01 location_double">地址：北京市成华区一环路南三段45#</a></li>
-                            <li class="location_msg01 location_single" style="width: 100%; height: 40%">案件关联：“131”抢劫、2014-05-13火灾、2013-12-08毒气   泄漏。</a></li>
+                            <li class="location_msg01 location_single" style="width: 100%; height: 40%">案件关联："131"抢劫、2014-05-13火灾、2013-12-08毒气   泄漏。</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1775,6 +1777,32 @@
     map.setMapStyle(mapStyle);
     map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    // 初始化地图
+    $(function() {
+        // 创建地图实例
+        var map = new BMap.Map("map");
+        // 创建点坐标
+        var point = new BMap.Point(116.404, 39.915); // 北京市中心点坐标
+        // 初始化地图，设置中心点坐标和地图级别
+        map.centerAndZoom(point, 12);
+        // 开启鼠标滚轮缩放
+        map.enableScrollWheelZoom(true);
+        // 添加地图控件
+        map.addControl(new BMap.NavigationControl());    
+        map.addControl(new BMap.ScaleControl());    
+        map.addControl(new BMap.OverviewMapControl());    
+        map.addControl(new BMap.MapTypeControl());
+        // 设置地图样式
+        map.setMapStyle({
+            style: 'midnight' // 使用黑色风格，适合监控页面
+        });
+    });
 </script>
 
 </body>

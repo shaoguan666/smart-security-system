@@ -86,6 +86,26 @@ a{text-decoration: none}
 .middle_bot_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 264px;padding: 5px;background-color: rgba(17,25,69,0.54) }
 .middle_bot_left video {object-fit:fill; width:100%;height:100%;}
 
+/* 修复左侧视频图像排列 */
+.video_cage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.video_around {
+    width: 48%;
+    height: 48%;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.video_around_chose {
+    border: 2px solid #0b7ff3;
+}
+
 .index_right{background-color: rgba(2,8,23,0.54);width: 626px;height: 790px;margin: 39px 0 0 0;border-radius: 10px}
 .right_line1{border-radius: 10px;border: 1px #0174f5 solid;margin: 1px;height: 788px}
 .right_line2{margin: 1px;border-radius: 9px;border: 2px #0b7ff3 solid;height: 784px}

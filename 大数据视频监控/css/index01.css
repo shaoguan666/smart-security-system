@@ -259,3 +259,48 @@
 
 
 }
+
+/* 修复右边栏字体格式冲突 */
+.flow_conter_outbox {
+    font-family: 'Microsoft YaHei', sans-serif !important;
+}
+
+.flow_conter_outbox span, 
+.flow_conter_outbox p, 
+.flow_conter_outbox div {
+    font-family: 'Microsoft YaHei', sans-serif !important;
+}
+
+/* 统一数字显示 */
+.one_flow_num {
+    font-family: 'Arial', sans-serif !important;
+    font-weight: normal;
+}
+
+/* 表格样式统一 */
+.flow_table {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+}
+
+.flow_table td, 
+.flow_table th {
+    padding: 4px !important;
+    white-space: nowrap;
+}
+
+/* 确保数据流量表格统一样式 */
+table.t_list {
+    width: 100%;
+    font-size: 12px !important;
+    border-collapse: collapse;
+}
+
+table.t_list th,
+table.t_list td {
+    font-family: 'Microsoft YaHei', sans-serif !important;
+    padding: 5px !important;
+    text-align: center;
+    word-break: keep-all;
+    white-space: nowrap;
+}
