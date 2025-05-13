@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 p{
     margin: 0 !important;
@@ -15,6 +16,8 @@ body{
     height: 100%;
     font-size: 100%;
     overflow: auto;
+    overflow-x: hidden;
+    font-family: "Microsoft YaHei", sans-serif;
 }
 .data_bodey{
     width: 100%;
@@ -415,6 +418,11 @@ body{
 }
 .clear{
     clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
 }
 .li_img01{
     width: 40%;
@@ -557,4 +565,50 @@ margin-top: 3% !important;
     margin-top: 5%;
 
 
+}
+
+/* 确保左中右三栏布局正确 */
+.left_cage, .center_cage, .right_cage {
+    float: left;
+    height: 100%;
+    position: relative;
+}
+
+.left_cage {
+    width: 25%;
+    padding-right: 5px;
+}
+
+.center_cage {
+    width: 50%;
+    padding: 0 5px;
+}
+
+.right_cage {
+    width: 25%;
+    padding-left: 5px;
+}
+
+/* 确保容器布局正确 */
+.cage_cl {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* 修复内容区域可能存在的溢出问题 */
+.dataAllBorder02 {
+    overflow: hidden;
+    position: relative;
+}
+
+/* 确保GitHub Pages环境下图片正确加载 */
+img.video_around {
+    background-color: #001133; /* 图片加载失败时的背景色 */
+}
+
+/* 修复消息滚动区域 */
+.message_scroll_box {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }

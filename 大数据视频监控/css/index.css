@@ -93,6 +93,9 @@ a{text-decoration: none}
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .video_around {
@@ -100,10 +103,65 @@ a{text-decoration: none}
     height: 48%;
     object-fit: cover;
     margin-bottom: 5px;
+    display: block;
 }
 
 .video_around_chose {
     border: 2px solid #0b7ff3;
+}
+
+/* 调整右侧数据显示 */
+.right_cage {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.depart_number_box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.depart_number_cage {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.depart_name {
+    flex: 0 0 auto;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.depart_number {
+    flex: 1 1 auto;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* 修复流量表格样式 */
+.dataAllBorder20 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.dataAllBorder20 table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.dataAllBorder20 th, 
+.dataAllBorder20 td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 高德地图监控点样式 */
